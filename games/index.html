@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NipkoMedia — Games</title>
+    <meta name="description" content="Games by NipkoMedia, an offline-first independent game studio." />
+    <link rel="stylesheet" href="/assets/css/styles.css"></head>
+
+<body>
+
+    <header class="site-header container">
+        <div class="logo" aria-label="NipkoMedia logo"></div>
+        <p class="tagline">Offline-first indie games.</p>
+
+        <nav class="nav" aria-label="Primary navigation">
+            <a href="../index.html">Home</a>
+            <a class="active" href="index.html">Games</a>
+            <a href="../studio/index.html">Studio</a>
+            <a href="../press/index.html">Press</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Games</h1>
+        <p class="section-lead">
+            Projects built for offline-first play and constrained platforms.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Nezdor</h3>
+                <p><strong>Fantasy RPG</strong></p>
+                <p>Explore, craft, fight, and progress through a living low-poly world built for offline play.</p>
+                <p><em>Status:</em> In development</p>
+
+                <div class="section-header">
+                    <h4>Screenshots</h4>
+                    <a class="faq-link" id="nezdorFaqLink" href="#">FAQ</a>
+                </div>
+
+                <div class="gallery">
+                    <img src="../assets/img/nezdor/bandits.png" alt="Nezdor bandits encounter" onclick="openLightbox(this.src)">
+                    <img src="../assets/img/nezdor/inn.png" alt="Nezdor inn interior" onclick="openLightbox(this.src)">
+                    <img src="../assets/img/nezdor/king.png" alt="Nezdor king NPC" onclick="openLightbox(this.src)">
+                    <img src="../assets/img/nezdor/skeleton.png" alt="Nezdor skeleton enemy" onclick="openLightbox(this.src)">
+                    <img src="../assets/img/nezdor/wolf.png" alt="Nezdor wolf encounter" onclick="openLightbox(this.src)">
+                    <img src="../assets/img/nezdor/tideback.png" alt="Nezdor beach encounter" onclick="openLightbox(this.src)">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Untitled RTS</h3>
+                <p><strong>Top-down Strategy</strong></p>
+                <p>A session-based tactical RTS designed for constrained, offline-first platforms.</p>
+                <p><em>Status:</em> Early concept</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© NipkoMedia — Independent Game Studio</p>
+    </footer>
+
+    <!-- Lightbox overlay (must be INSIDE body) -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <!-- stopPropagation prevents clicks on the image from closing the overlay -->
+        <img id="lightbox-img" alt="Expanded screenshot" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+    <script>
+        (function () {
+            const faqLink = document.getElementById("nezdorFaqLink");
+            if (!faqLink) return;
+
+            // Local dev (double-click / file://): use a relative path
+            const localHref = "../faq/nezdor/index.html";
+
+            // Real server (http/https): use root-based path (nice clean URL)
+            const serverHref = "/faq/nezdor/";
+
+            faqLink.href = (location.protocol === "file:") ? localHref : serverHref;
+        })();
+    </script>
+
+</body>
+</html>
+
